@@ -6,7 +6,7 @@ const SCREENSHOT_PATH = "./node_modules/nightwatch/screenshots/" + PKG.version +
 
 const config = { // we use a nightwatch.conf.js file so we can include comments and helper functions
   "src_folders": [
-    "test/e2e"     // we use '/test' as the name of our test directory by default. So 'test/e2e' for 'e2e'.
+    "test/pharmgkb"     // we use '/test' as the name of our test directory by default. So 'test/e2e' for 'e2e'.
   ],
   "output_folder": "./node_modules/nightwatch/reports", // reports (test outcome) output by Nightwatch
   "selenium": {
@@ -52,9 +52,7 @@ const config = { // we use a nightwatch.conf.js file so we can include comments 
         "browserName": "chrome",
         "chromeOptions": {
           "args": [
-            `Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46
-            (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3`,
-            "--window-size=640,1136" // iphone 5
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3"
           ]
         },
         "javascriptEnabled": true,
@@ -71,7 +69,7 @@ const config = { // we use a nightwatch.conf.js file so we can include comments 
     "chromemac": { // browsers used on saucelabs:
       "desiredCapabilities": {
         "browserName": "chrome",
-        "platform": "OS X 10.11",
+        "platform": "OS X 10.13",
         "version": "47"
       }
     },
@@ -89,6 +87,13 @@ const config = { // we use a nightwatch.conf.js file so we can include comments 
         "version": "33"
       }
     },
+		"firefoxmac": {
+			"desiredCapabilities": {
+				"browserName": "firefox",
+				"platform": "OS X 10.13",
+				"version": "58"
+			}
+		},
     "internet_explorer_10" : {
       "desiredCapabilities": {
         "platform": "Windows 7",
@@ -114,7 +119,8 @@ const config = { // we use a nightwatch.conf.js file so we can include comments 
       }
     }
   }
-}
+};
+
 module.exports = config;
 
 function padLeft (count) { // theregister.co.uk/2016/03/23/npm_left_pad_chaos/
