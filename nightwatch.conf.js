@@ -19,7 +19,7 @@ const config = { // we use a nightwatch.conf.js file so we can include comments 
       "webdriver.chrome.driver" : chromedriver.path
     }
   },
-  "test_workers" : {"enabled" : true, "workers" : "auto"}, // perform tests in parallel where possible
+  "test_workers" : {"enabled" : true, "workers" : 1}, // problems exist in parallel, keep it to 1 for now
   "test_settings": {
     "default": {
       "launch_url": "http://localhost", // we're testing a Public or "staging" site on Saucelabs
@@ -87,13 +87,13 @@ const config = { // we use a nightwatch.conf.js file so we can include comments 
         "version": "33"
       }
     },
-		"firefoxmac": {
-			"desiredCapabilities": {
-				"browserName": "firefox",
-				"platform": "OS X 10.13",
-				"version": "58"
-			}
-		},
+    "firefoxmac": {
+        "desiredCapabilities": {
+            "browserName": "firefox",
+            "platform": "OS X 10.13",
+            "version": "58"
+        }
+    },
     "internet_explorer_10" : {
       "desiredCapabilities": {
         "platform": "Windows 7",
