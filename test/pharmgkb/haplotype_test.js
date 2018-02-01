@@ -1,5 +1,5 @@
 var config = require('../../nightwatch.conf.js');
-var timeout = 60000;
+var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Haplotype Page test': function (browser) {
