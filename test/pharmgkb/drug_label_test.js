@@ -5,7 +5,6 @@ module.exports = {
 	'PharmGKB Drug Label Page test': function (browser) {
 		browser
 			.url('https://www.pharmgkb.org/label/PA166104782')
-			.pause(timeout)
 			.execute(function() {
 				if (!browser.assert.title('Annotation of FDA Label for azathioprine and TPMT | PharmGKB')) {
 					this.refresh();

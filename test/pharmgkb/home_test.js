@@ -5,11 +5,7 @@ module.exports = {
 	'PharmGKB Home Page test': function(browser) {
 		browser
 			.url('https://www.pharmgkb.org')
-			.pause(5000)
-			.waitForElementPresent('.home-page', timeout, false, function() {
-				this.refresh();
-				return browser.waitForElementPresent('.home-page', timeout)
-			}, 'Initial test for element')
+			.waitForElementPresent('.home-page', timeout)
 			.assert.title('PharmGKB')
 			.execute(function() {
 				if (!browser.assert.elementPresent('.animated-line')) {
@@ -19,24 +15,12 @@ module.exports = {
 					return browser.assert.elementPresent('.animated-line');
 				}
 			}, [])
-			.pause(1000)
-			.execute(function() {
-				if (!browser.assert.elementPresent('.btn-success:nth-of-type(1)')) {
-					this.refresh();
-					browser.waitForElementPresent('.btn-success:nth-of-type(1)', timeout);
-				} else {
-					return browser.assert.elementPresent('.btn-success:nth-of-type(1)');
-				}
-			}, [])
 			.execute(function() {
 				document.querySelector('.btn-success:nth-of-type(1)').click()
 			}, [])
-			.pause(5000)
+			.pause(timeout)
 			.assert.urlContains('/whatIsPharmacogenomics')
-			.waitForElementPresent('.section-components', timeout, false, function() {
-				this.refresh();
-				return browser.waitForElementPresent('.section-components', timeout);
-			}, 'Initial test for element')
+			.waitForElementPresent('.section-components', timeout)
 			.execute(function() {
 				if (!browser.assert.title('What is Pharmacogenomics? | PharmGKB')) {
 					this.refresh();
@@ -53,16 +37,13 @@ module.exports = {
 				}
 			}, [])
 			.assert.containsText('.outreachSection:nth-of-type(1) > .outreachContent h3', 'Genomics?')
-			.pause(1000)
 			.execute(function() {
 				document.querySelector('.outreachSection:nth-of-type(1) .outreachContent__text a[role="button"]').click()
 			}, [])
-			.pause(5000)
+			.pause(timeout)
 			.assert.cssClassNotPresent('.outreachSection:nth-of-type(1) .rah-static div', 'display')
 			.assert.containsText('.outreachSection:nth-of-type(1) .outreachContent', 'Humans have over 20,000 genes')
-			.pause(1000)
 			.back()
-			.pause(5000)
 			.assert.urlEquals('https://www.pharmgkb.org/')
 			.execute(function() {
 				if (!browser.assert.elementPresent('#vips')) {
@@ -75,15 +56,13 @@ module.exports = {
 			.execute(function() {
 				document.querySelector('#vips').click()
 			}, [])
-			.pause(5000)
+			.pause(timeout)
 			.assert.urlContains('/vips')
-			.pause(1000)
 			.back()
-			.pause(5000)
 			.execute(function() {
 				document.querySelector('.btn-info:nth-of-type(1)').click()
 			}, [])
-			.pause(1000)
+			.pause(timeout)
 			.assert.urlContains('/cancerPgx')
 			.end();
 	}
