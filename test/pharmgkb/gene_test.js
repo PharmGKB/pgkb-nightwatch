@@ -5,7 +5,7 @@ module.exports = {
 	'PharmGKB Gene Page test': function(browser) {
 		browser
 			.url('https://www.pharmgkb.org/gene/PA356')
-			.waitForElementPresent('.half-width-facts', timeout)
+			.waitForElementPresent('.fact-section-header', timeout)
 			.execute(function() {
 				if (!browser.assert.title('TPMT - Overview | PharmGKB')) {
 					this.refresh();
