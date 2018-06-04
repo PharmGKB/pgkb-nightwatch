@@ -7,20 +7,20 @@ module.exports = {
 			.url('https://www.pharmgkb.org/guideline/PA166105006')
 			.pause(timeout)
 			.assert.urlContains('/guideline/')
-			.waitForElementVisible('.genotype-specific-annotations', timeout)
+			.waitForElementVisible('.guideline-detail', timeout)
 			.execute(function() {
 				if (!browser.assert.title('Annotation of CPIC Guideline for amitriptyline and CYP2C19, CYP2D6 | PharmGKB')) {
 					this.refresh();
 					return (browser.assert.title('Annotation of CPIC Guideline for amitriptyline and CYP2C19, CYP2D6 | PharmGKB'));
 				}
 			}, [])
-			.click('.genotype-specific-annotations-picker:nth-of-type(1) > select:nth-of-type(1) option[value="*3"]')
+			.click('.genotype-specific-annotations-picker:nth-of-type(1) > select:nth-of-type(1) option[value="No function"]')
 			.pause(1000)
-			.click('.genotype-specific-annotations-picker:nth-of-type(1) > select:nth-of-type(2) option[value="*10"]')
+			.click('.genotype-specific-annotations-picker:nth-of-type(1) > select:nth-of-type(2) option[value="Decreased function"]')
 			.pause(1000)
-			.click('.genotype-specific-annotations-picker:nth-of-type(2) > select:nth-of-type(1) option[value="*6xN"]')
+			.click('.genotype-specific-annotations-picker:nth-of-type(2) > select:nth-of-type(1) option[value="No function"]')
 			.pause(1000)
-			.click('.genotype-specific-annotations-picker:nth-of-type(2) > select:nth-of-type(2) option[value="*17x2"]')
+			.click('.genotype-specific-annotations-picker:nth-of-type(2) > select:nth-of-type(2) option[value="Normal function"]')
 			.pause(timeout)
 			.waitForElementVisible('.genotype-specific-annotations-facts', timeout)
 			.execute(function() {
