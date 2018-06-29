@@ -4,7 +4,7 @@ var timeout = 2000;
 module.exports = {
 	'PharmGKB Drug Class Overview Page test': function(browser) {
 		browser
-			.url('https://www.pharmgkb.org/chemical/PA164712445')
+			.url('https://www.pharmgkb.org/chemical/PA133950441')
 			.assert.urlContains('/chemical/')
 			.waitForElementPresent('.resourceCounts', timeout)
 			.execute(function() {
