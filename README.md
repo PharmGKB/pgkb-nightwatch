@@ -11,7 +11,7 @@ $> npm i
 
 ## Running
 
-To run all tests:
+To run all tests on www:
 
 ```
 $> npm test
@@ -20,5 +20,17 @@ $> npm test
 To run a single test (gene_test, for example):
 
 ```
-$> node_modules/.bin/nightwatch -e local test/pharmgkb/gene_test.js
+$> npm run test -- ./test/pharmgkb/gene_test.js
+```
+
+To run all tests against local:
+
+```
+$> npm run test-local
+```
+
+To run a single test against local (gene_test):
+
+```
+$> npm run test-local -- ./test/pharmgkb/gene_test.js
 ```

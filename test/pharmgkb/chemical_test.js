@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Chemical Page test': function(browser) {
 		browser
-			.url('https://www.pharmgkb.org/chemical/PA449088')
+			.url(browser.launchUrl + '/chemical/PA449088')
 			.pause(timeout)
 			.assert.urlContains('/chemical/')
 			.execute(function() {

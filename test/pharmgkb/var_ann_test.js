@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Variant Annotation Page test': function (browser) {
 		browser
-			.url('https://www.pharmgkb.org/variantAnnotation/1445362018')
+			.url(browser.launchUrl + '/variantAnnotation/1445362018')
 			.pause(timeout)
 			.assert.urlContains('/variantAnnotation/')
 			.waitForElementVisible('#variant-ann-publication', timeout)

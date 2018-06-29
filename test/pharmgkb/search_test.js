@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Search Page test': function(browser) {
 		browser
-			.url('https://www.pharmgkb.org')
+			.url(browser.launchUrl)
 			.waitForElementPresent('.home-page', timeout)
 			.assert.title('PharmGKB')
 			.waitForElementPresent('.animated-line', timeout)

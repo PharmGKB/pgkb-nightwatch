@@ -1,29 +1,28 @@
-var config = require('../../nightwatch.conf.js');
-var timeout = 2000;
+var timeout = 30000;
 
 module.exports = {
 	'PharmGKB Drug Class Overview Page test': function(browser) {
 		browser
-			.url('https://www.pharmgkb.org/chemical/PA133950441')
+      .url(browser.launchUrl + '/chemical/PA133950441')
 			.assert.urlContains('/chemical/')
 			.waitForElementPresent('.resourceCounts', timeout)
 			.execute(function() {
-				if (!browser.assert.title('Antihypertensives - Overview | PharmGKB')) {
+				if (!browser.assert.title('hmg coa reductase inhibitors - Overview | PharmGKB')) {
 					this.refresh();
 					browser.pause(timeout);
 				}
-				return browser.assert.title('Antihypertensives - Overview | PharmGKB')
+				return browser.assert.title('hmg coa reductase inhibitors - Overview | PharmGKB')
 			}, [])
 			.execute(function() {
-				document.querySelector('.chemical-list-item:nth-of-type(5) a').click();
+				document.querySelector('.chemical-list-item:nth-of-type(1) a').click();
 			}, [])
 			.pause(timeout)
 			.execute(function() {
-				if (!browser.assert.title('clonidine - Overview | PharmGKB')) {
+				if (!browser.assert.title('atorvastatin - Overview | PharmGKB')) {
 					this.refresh();
 					browser.pause(timeout);
 				}
-				return browser.assert.title('clonidine - Overview | PharmGKB')
+				return browser.assert.title('atorvastatin - Overview | PharmGKB')
 			}, [])
 			.waitForElementPresent('.chemicalStructure div img', timeout)
 			.back()

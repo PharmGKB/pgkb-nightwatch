@@ -1,4 +1,3 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 5000;
 
 module.exports = {

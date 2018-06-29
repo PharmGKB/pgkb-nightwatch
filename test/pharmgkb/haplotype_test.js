@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Haplotype Page test': function (browser) {
 		browser
-			.url('https://www.pharmgkb.org/haplotype/PA165816577')
+			.url(browser.launchUrl + '/haplotype/PA165816577')
 			.waitForElementVisible('.counts', timeout)
 			.execute(function() {
 				if (!browser.assert.title('CYP2D6*2 - Overview | PharmGKB') || !browser.assert.title('Haplotype PA165816577 - Overview | PharmGKB')) {

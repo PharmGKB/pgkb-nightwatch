@@ -1,8 +1,7 @@
 require('env2')('.env'); // optionally store your environment variables in .env
 const seleniumServer = require("selenium-server");
 const chromedriver = require("chromedriver");
-const PKG = require('./package.json'); // so we can get the version of the project
-const SCREENSHOT_PATH = "./node_modules/nightwatch/screenshots/" + PKG.version + "/";
+const SCREENSHOT_PATH = './screenshots';
 
 const config = { // we use a nightwatch.conf.js file so we can include comments and helper functions
   "src_folders": [
@@ -22,37 +21,17 @@ const config = { // we use a nightwatch.conf.js file so we can include comments 
   "test_workers" : {"enabled" : true, "workers" : 3}, // problems exist in parallel, keep it to 1 for now
   "test_settings": {
     "default": {
-      "launch_url": "http://localhost", // we're testing a Public or "staging" site on Saucelabs
-      "selenium_port": 80,
-      "selenium_host": "ondemand.saucelabs.com",
+      "launch_url": "https://www.pharmgkb.org",
       "silent": true,
       "screenshots": {
-        "enabled": true, // save screenshots to this directory (excluded by .gitignore)
+        "enabled": true,
         "path": SCREENSHOT_PATH
-      },
-      "username" : "${SAUCE_USERNAME}",     // if you want to use Saucelabs remember to
-      "access_key" : "${SAUCE_ACCESS_KEY}", // export your environment variables (see readme)
-      "globals": {
-        "waitForConditionTimeout": 10000    // wait for content on the page before continuing
-      }
-    },
-    "local": {
-      "launch_url": "http://localhost",
-      "selenium_port": 4444,
-      "selenium_host": "127.0.0.1",
-      "silent": true,
-      "screenshots": {
-        "enabled": true, // save screenshots taken here
-        "path": SCREENSHOT_PATH
-      }, // this allows us to control the
-      "globals": {
-        "waitForConditionTimeout": 15000 // on localhost sometimes internet is slow so wait...
       },
       "desiredCapabilities": {
         "browserName": "chrome",
         "chromeOptions": {
           "args": [
-          	"headless",
+            "headless",
             "Mozilla/5.0 (iPhone; CPU iPhone OS 5_0 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9A334 Safari/7534.48.3"
           ]
         },
@@ -60,64 +39,11 @@ const config = { // we use a nightwatch.conf.js file so we can include comments 
         "acceptSslCerts": true
       }
     },
-    "chrome": { // your local Chrome browser (chromedriver)
-      "desiredCapabilities": {
-        "browserName": "chrome",
-        "javascriptEnabled": true,
-        "acceptSslCerts": true
-      }
-    },
-    "chromemac": { // browsers used on saucelabs:
-      "desiredCapabilities": {
-        "browserName": "chrome",
-        "platform": "OS X 10.13",
-        "version": "47"
-      }
-    },
-    "ie11": {
-      "desiredCapabilities": {
-        "browserName": "internet explorer",
-        "platform": "Windows 10",
-        "version": "11.0"
-      }
-    },
-    "firefox" : {
-      "desiredCapabilities": {
-        "platform": "XP",
-        "browserName": "firefox",
-        "version": "33"
-      }
-    },
-    "firefoxmac": {
-        "desiredCapabilities": {
-            "browserName": "firefox",
-            "platform": "OS X 10.13",
-            "version": "58"
-        }
-    },
-    "internet_explorer_10" : {
-      "desiredCapabilities": {
-        "platform": "Windows 7",
-        "browserName": "internet explorer",
-        "version": "10"
-      }
-    },
-    "android_s4_emulator": {
-      "desiredCapabilities": {
-        "browserName": "android",
-        "deviceOrientation": "portrait",
-        "deviceName": "Samsung Galaxy S4 Emulator",
-        "version": "4.4"
-      }
-    },
-    "iphone_6_simulator": {
-      "desiredCapabilities": {
-        "browserName": "iPhone",
-        "deviceOrientation": "portrait",
-        "deviceName": "iPhone 6",
-        "platform": "OSX 10.10",
-        "version": "8.4"
-      }
+    "local": {
+      "launch_url": "https://localhost.pharmgkb.org:9999",
+      "globals": {
+        "waitForConditionTimeout": 15000 // on localhost sometimes internet is slow so wait...
+      },
     }
   }
 };

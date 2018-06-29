@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Policy Page test': function(browser) {
     browser
-      .url('https://www.pharmgkb.org')
+      .url(browser.launchUrl)
 			.pause(timeout)
 			.waitForElementPresent('.home-page', timeout)
 			.execute(function() {

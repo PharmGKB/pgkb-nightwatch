@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Combination Page test': function (browser) {
 		browser
-			.url('https://www.pharmgkb.org/combination/PA451906,PA126')
+			.url(browser.launchUrl + '/combination/PA451906,PA126')
 			.assert.urlContains(',PA')
 			.waitForElementPresent('.counts', timeout)
 			.execute(function() {

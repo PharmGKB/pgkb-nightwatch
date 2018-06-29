@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Download Page test': function (browser) {
 		browser
-			.url('https://www.pharmgkb.org/downloads')
+			.url(browser.launchUrl + '/downloads')
 			.pause(timeout)
 			.assert.urlContains('/downloads')
 			.waitForElementVisible('section.fact-section:nth-of-type(1)', timeout)

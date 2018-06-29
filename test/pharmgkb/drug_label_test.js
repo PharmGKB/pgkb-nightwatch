@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Drug Label Page test': function (browser) {
 		browser
-			.url('https://www.pharmgkb.org/label/PA166104782')
+			.url(browser.launchUrl + '/label/PA166104782')
 			.execute(function() {
 				if (!browser.assert.title('Annotation of FDA Label for azathioprine and TPMT | PharmGKB')) {
 					this.refresh();

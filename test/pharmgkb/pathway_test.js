@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Pathway Page test': function(browser) {
 		browser
-			.url('https://www.pharmgkb.org/pathway/PA166104634')
+			.url(browser.launchUrl + '/pathway/PA166104634')
 			.assert.urlContains('/pathway/')
 			.waitForElementPresent('.pathway-diagram-container img', timeout)
 			.execute(function() {

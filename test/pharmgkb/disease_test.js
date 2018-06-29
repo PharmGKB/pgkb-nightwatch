@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Disease Page test': function (browser) {
 		browser
-			.url('https://www.pharmgkb.org/disease/PA443635')
+			.url(browser.launchUrl + '/disease/PA443635')
 			.waitForElementVisible('.counts', timeout)
 			.execute(function() {
 				if (!browser.assert.title('Cardiovascular Diseases - Overview | PharmGKB')) {

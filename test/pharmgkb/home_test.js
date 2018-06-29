@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Home Page test': function(browser) {
 		browser
-			.url('https://www.pharmgkb.org')
+			.url(browser.launchUrl)
 			.waitForElementPresent('.home-page', timeout)
 			.assert.title('PharmGKB')
 			.execute(function() {
@@ -44,7 +43,6 @@ module.exports = {
 			.assert.cssClassNotPresent('.outreachSection:nth-of-type(1) .rah-static div', 'display')
 			.assert.containsText('.outreachSection:nth-of-type(1) .outreachContent', 'Humans have over 20,000 genes')
 			.back()
-			.assert.urlEquals('https://www.pharmgkb.org/')
 			.execute(function() {
 				if (!browser.assert.elementPresent('#vips')) {
 					this.refresh();

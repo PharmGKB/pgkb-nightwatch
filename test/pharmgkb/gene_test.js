@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Gene Page test': function(browser) {
 		browser
-			.url('https://www.pharmgkb.org/gene/PA356')
+			.url(browser.launchUrl + '/gene/PA356')
 			.waitForElementPresent('.fact-section-header', timeout)
 			.execute(function() {
 				if (!browser.assert.title('TPMT - Overview | PharmGKB')) {

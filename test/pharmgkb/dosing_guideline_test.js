@@ -1,10 +1,9 @@
-var config = require('../../nightwatch.conf.js');
 var timeout = 2000;
 
 module.exports = {
 	'PharmGKB Dosing Guideline Page test': function (browser) {
 		browser
-			.url('https://www.pharmgkb.org/guideline/PA166105006')
+			.url(browser.launchUrl + '/guideline/PA166105006')
 			.pause(timeout)
 			.assert.urlContains('/guideline/')
 			.waitForElementVisible('.guideline-detail', timeout)
