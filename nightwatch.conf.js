@@ -3,9 +3,9 @@ const seleniumServer = require("selenium-server");
 const chromedriver = require("chromedriver");
 const SCREENSHOT_PATH = './screenshots';
 
-const config = { // we use a nightwatch.conf.js file so we can include comments and helper functions
+const config = {
   "src_folders": [
-    "test/pharmgkb"     // we use '/test' as the name of our test directory by default. So 'test/e2e' for 'e2e'.
+    "test/pharmgkb"
   ],
   "output_folder": "./node_modules/nightwatch/reports", // reports (test outcome) output by Nightwatch
   "selenium": {
@@ -18,7 +18,7 @@ const config = { // we use a nightwatch.conf.js file so we can include comments 
       "webdriver.chrome.driver" : chromedriver.path
     }
   },
-  "test_workers" : {"enabled" : true, "workers" : 3}, // problems exist in parallel, keep it to 1 for now
+  "test_workers" : {"enabled" : true, "workers" : 3},
   "test_settings": {
     "default": {
       "launch_url": "https://www.pharmgkb.org",
