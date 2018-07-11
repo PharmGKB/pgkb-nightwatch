@@ -1,43 +1,41 @@
-var timeout = 30000;
+const timeout = 1000;
 
 module.exports = {
-	'PharmGKB Drug Class Overview Page test': function(browser) {
-		browser
-      .url(browser.launchUrl + '/chemical/PA133950441')
-			.assert.urlContains('/chemical/')
-			.waitForElementPresent('.resourceCounts', timeout)
-			.execute(function() {
-				if (!browser.assert.title('hmg coa reductase inhibitors - Overview | PharmGKB')) {
-					this.refresh();
-					browser.pause(timeout);
-				}
-				return browser.assert.title('hmg coa reductase inhibitors - Overview | PharmGKB')
-			}, [])
-			.execute(function() {
-				document.querySelector('.chemical-list-item:nth-of-type(1) a').click();
-			}, [])
-			.pause(timeout)
-			.execute(function() {
-				if (!browser.assert.title('atorvastatin - Overview | PharmGKB')) {
-					this.refresh();
-					browser.pause(timeout);
-				}
-				return browser.assert.title('atorvastatin - Overview | PharmGKB')
-			}, [])
-			.waitForElementPresent('.chemicalStructure div img', timeout)
-			.back()
-			.execute(function() {
-				document.querySelector('ul.side-nav > :nth-child(4) a').click();
-			}, [])
-			.pause(timeout)
-			.waitForElementPresent('.table-inline', timeout)
-			.assert.urlContains('/clinicalAnnotation')
-			.execute(function() {
-				document.querySelector('.right-table .row-color-warning:nth-of-type(6) td:nth-of-type(1) a').click();
-			}, [])
-			.pause(timeout)
-			.waitForElementPresent('.clinical-annotation-detail', timeout)
-			.assert.urlContains('/clinicalAnnotation/')
-			.end();
+	'PharmGKB Drug Class Overview Page test': function(client) {
+		client
+      .url(client.launchUrl + '/chemical/PA133950441')
+      .pause(timeout);
+		client.assert.title('hmg coa reductase inhibitors - Overview | PharmGKB');
+		client.expect.element('.resourceCounts').to.be.visible;
+		client.expect.element('.chemical-list-item a').to.be.visible;
+
+    client.expect.element('ul.side-nav li:nth-child(4) a').text.to.equal('Clinical Annotations');
+    client.click('ul.side-nav li:nth-child(4) a')
+      .pause(timeout);
+
+    client.click('ul.side-nav li:nth-child(4) a')
+      .pause(timeout);
+    client.assert.title('hmg coa reductase inhibitors - Clinical Annotations | PharmGKB');
+    client.expect.element('.table-inline').to.be.visible;
+    client.expect.element('.right-table').to.be.visible;
+    client.click('.right-table .row-color-warning td a')
+      .pause(timeout);
+    
+    client.assert.urlContains('/clinicalAnnotation/');
+    client.expect.element('.clinical-annotation-detail').to.be.visible;
+    client.back().pause(timeout);
+    client.back();
+    client.click('ul.side-nav li a');
+
+		client.click('.chemical-list-item a')
+      .pause(timeout);
+		client.assert.title('atorvastatin - Overview | PharmGKB');
+		client.expect.element('.chemicalStructure div img').to.be.visible;
+
+		client.back()
+      .pause(timeout);
+    client.assert.title('hmg coa reductase inhibitors - Overview | PharmGKB');
+
+		client.end();
 	}
 };
