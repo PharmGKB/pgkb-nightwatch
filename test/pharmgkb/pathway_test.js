@@ -5,7 +5,7 @@ module.exports = {
 		browser
 			.url(browser.launchUrl + '/pathway/PA166104634')
 			.assert.urlContains('/pathway/')
-			.waitForElementPresent('.pathway-diagram-container img', timeout)
+			.waitForElementPresent('.pathwayDiagram img', timeout)
 			.execute(function() {
 				if (!browser.assert.title('Abacavir Pathway, Pharmacokinetics/Pharmacodynamics Overview | PharmGKB')) {
 					this.refresh();
