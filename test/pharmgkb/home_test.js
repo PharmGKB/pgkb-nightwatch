@@ -1,67 +1,60 @@
-var timeout = 2000;
-
 module.exports = {
 	'PharmGKB Home Page test': function(browser) {
-		browser
-			.url(browser.launchUrl)
-			.waitForElementPresent('.home-page', timeout)
-			.assert.title('PharmGKB')
-			.execute(function() {
-				if (!browser.assert.elementPresent('.animated-line')) {
-					this.refresh();
-					browser.waitForElementPresent('.animated-line', timeout);
-				} else {
-					return browser.assert.elementPresent('.animated-line');
-				}
-			}, [])
-			.execute(function() {
-				document.querySelector('.btn-success:nth-of-type(1)').click()
-			}, [])
-			.pause(timeout)
-			.assert.urlContains('/whatIsPharmacogenomics')
-			.waitForElementPresent('.section-components', timeout)
-			.execute(function() {
-				if (!browser.assert.title('What is Pharmacogenomics? | PharmGKB')) {
-					this.refresh();
-					browser.pause(5000);
-				}
-				return browser.assert.title('What is Pharmacogenomics? | PharmGKB')
-			}, [])
-			.execute(function() {
-				if (!browser.assert.elementPresent('.outreachSection:nth-of-type(1) > .outreachContent h3')) {
-					this.refresh();
-					browser.waitForElementPresent('.outreachSection:nth-of-type(1) > .outreachContent h3', timeout);
-				} else {
-					return browser.assert.elementPresent('.outreachSection:nth-of-type(1) > .outreachContent h3');
-				}
-			}, [])
-			.assert.containsText('.outreachSection:nth-of-type(1) > .outreachContent h3', 'Genomics?')
-			.execute(function() {
-				document.querySelector('.outreachSection:nth-of-type(1) .outreachContent__text a[role="button"]').click()
-			}, [])
-			.pause(timeout)
-			.assert.cssClassNotPresent('.outreachSection:nth-of-type(1) .rah-static div', 'display')
-			.assert.containsText('.outreachSection:nth-of-type(1) .outreachContent', 'Humans have over 20,000 genes')
-			.back()
-			.execute(function() {
-				if (!browser.assert.elementPresent('#vips')) {
-					this.refresh();
-					browser.waitForElementPresent('#vips', timeout);
-				} else {
-					return browser.assert.elementPresent('#vips');
-				}
-			}, [])
-			.execute(function() {
-				document.querySelector('#vips').click()
-			}, [])
-			.pause(timeout)
-			.assert.urlContains('/vips')
-			.back()
-			.execute(function() {
-				document.querySelector('.btn-info:nth-of-type(1)').click()
-			}, [])
-			.pause(timeout)
-			.assert.urlContains('/cancerPgx')
-			.end();
+		browser.url(browser.launchUrl);
+
+		browser.waitForElementPresent('.home-page');
+		browser.assert.title('PharmGKB');
+        browser.assert.elementPresent('.animated-line');
+        browser.url(function (result) {
+            browser.resizeWindow(1280, 800);
+            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+        });
+
+
+        browser.click('.btn-success:nth-of-type(1)');
+		browser.waitForElementPresent('.section-components');
+		browser.assert.urlContains('/whatIsPharmacogenomics');
+        browser.assert.title('What is Pharmacogenomics? | PharmGKB');
+        browser.assert.elementPresent('.outreachSection:nth-of-type(1) > .outreachContent h3');
+        browser.assert.containsText('.outreachSection:nth-of-type(1) > .outreachContent h3', 'Genomics?');
+        browser.url(function (result) {
+            browser.resizeWindow(1280, 800);
+            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+        });
+
+        browser.click('.outreachSection:nth-of-type(1) .outreachContent__text a[role="button"]');
+        browser.waitForElementPresent('.outreachSection:nth-of-type(1) .rah-static');
+        browser.assert.cssClassNotPresent('.outreachSection:nth-of-type(1) .rah-static div', 'display');
+        browser.assert.containsText('.outreachSection:nth-of-type(1) .outreachContent', 'Humans have over 20,000 genes');
+        browser.url(function (result) {
+            browser.resizeWindow(1280, 800);
+            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+        });
+
+        browser.back();
+        browser.waitForElementPresent('#vips');
+        browser.url(function (result) {
+            browser.resizeWindow(1280, 800);
+            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+        });
+
+        browser.click('#vips');
+		browser.waitForElementPresent('.container');
+		browser.assert.urlContains('/vips');
+        browser.url(function (result) {
+            browser.resizeWindow(1280, 800);
+            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+        });
+
+        browser.back();
+        browser.click('.btn-info:nth-of-type(1)');
+        browser.waitForElementPresent('.static');
+        browser.assert.urlContains('/cancerPgx');
+        browser.url(function (result) {
+            browser.resizeWindow(1280, 800);
+            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+        });
+
+        browser.end();
 	}
 };
