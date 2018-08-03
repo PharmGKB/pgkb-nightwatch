@@ -1,45 +1,45 @@
 module.exports = {
-	'PharmGKB Drug Class Overview Page test': function(client) {
-	    client.url(client.launchUrl + '/chemical/PA133950441');
+	'PharmGKB Drug Class Overview Page test': function(browser) {
+	    browser.url(browser.launchUrl + '/chemical/PA133950441');
 
-	    client.waitForElementVisible('.chemical-list-item a');
-	    client.assert.title('hmg coa reductase inhibitors - Overview | PharmGKB');
-		client.expect.element('.resourceCounts').to.be.visible;
-        client.expect.element('ul.side-nav li:nth-child(4) a').text.to.equal('Clinical Annotations');
-        client.url(function (result) {
-            client.resizeWindow(1280, 800);
-            client.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+	    browser.waitForElementVisible('.chemical-list-item a');
+	    browser.assert.title('hmg coa reductase inhibitors - Overview | PharmGKB');
+		browser.expect.element('.resourceCounts').to.be.visible;
+        browser.expect.element('ul.side-nav li:nth-child(4) a').text.to.equal('Clinical Annotations');
+        browser.url(function (result) {
+            browser.resizeWindow(1280, 800);
+            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
-        client.click('ul.side-nav li:nth-child(4) a');
-        client.waitForElementVisible('.table-inline');
-        client.expect.element('.right-table').to.be.visible;
-        client.assert.title('hmg coa reductase inhibitors - Clinical Annotations | PharmGKB');
-        client.url(function (result) {
-            client.resizeWindow(1280, 800);
-            client.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+        browser.click('ul.side-nav li:nth-child(4) a');
+        browser.waitForElementVisible('.table-inline');
+        browser.expect.element('.right-table').to.be.visible;
+        browser.assert.title('hmg coa reductase inhibitors - Clinical Annotations | PharmGKB');
+        browser.url(function (result) {
+            browser.resizeWindow(1280, 800);
+            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
 
-        client.click('.right-table .row-color-warning td a');
-        client.waitForElementVisible('.clinical-annotation-detail');
-        client.assert.urlContains('/clinicalAnnotation/');
-        client.url(function (result) {
-            client.resizeWindow(1280, 800);
-            client.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+        browser.click('.right-table .row-color-warning td a');
+        browser.waitForElementVisible('.clinical-annotation-detail');
+        browser.assert.urlContains('/clinicalAnnotation/');
+        browser.url(function (result) {
+            browser.resizeWindow(1280, 800);
+            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
-        client.back().back();
+        browser.back().back();
 
-        client.waitForElementVisible('.chemical-list-item a');
-        client.click('.chemical-list-item a');
-		client.waitForElementVisible('.chemicalStructure div img');
-		client.assert.title('atorvastatin - Overview | PharmGKB');
-        client.url(function (result) {
-            client.resizeWindow(1280, 800);
-            client.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+        browser.waitForElementVisible('.chemical-list-item a');
+        browser.click('.chemical-list-item a');
+		browser.waitForElementVisible('.chemicalStructure div img');
+		browser.assert.title('atorvastatin - Overview | PharmGKB');
+        browser.url(function (result) {
+            browser.resizeWindow(1280, 800);
+            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
-		client.end();
+		browser.end();
 	}
 };
