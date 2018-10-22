@@ -1,5 +1,5 @@
 module.exports = {
-    'PharmGKB Home Page test(Drug Labels)': function (browser) {
+    'PharmGKB Labels List Page': function (browser) {
         browser.url(browser.launchUrl);
 
         browser.waitForElementPresent('.home-page');
@@ -7,7 +7,7 @@ module.exports = {
         browser.click('.labels a');
         browser.waitForElementPresent('.ReactTable');
         browser.assert.urlContains('/labels');
-        browser.assert.attributeContains('.label-status a', 'href', '/label/PA');
+        browser.assert.attributeContains('.label-status a', 'href', '/labelAnnotation/PA');
         browser.assert.attributeContains('.rt-tr-group:last-of-type a', 'href', '/chemical/PA');
 
         browser.url(function (result) {
