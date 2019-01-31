@@ -11,7 +11,7 @@ module.exports = {
         });
 
         browser.click('ul.side-nav li:nth-of-type(4) a');
-        browser.waitForElementPresent('.table-wrapper');
+        browser.waitForElementPresent('div.ReactTable');
         browser.assert.urlContains('/variantAnnotation');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
@@ -19,13 +19,9 @@ module.exports = {
         });
 
 
-        browser.click('tbody > tr:nth-child(1) > td:nth-child(1) > a');
+        browser.click('.rt-tr-group div.rt-td a');
         browser.assert.urlContains('/variant/PA');
         browser.assert.urlContains('/variantAnnotation/');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
 
         browser.end();
     }
