@@ -7,7 +7,7 @@ module.exports = {
 		browser.assert.title('Annotation of CPIC Guideline for amitriptyline and CYP2C19,CYP2D6 | PharmGKB');
 		browser.url(function (result) {
 			browser.resizeWindow(1280, 800);
-			browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+			browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
 		});
 
 		browser.click('.genotype-specific-annotations-picker:nth-of-type(1) > select:nth-of-type(1) option[value="No function"]');
@@ -18,7 +18,7 @@ module.exports = {
 		browser.waitForElementVisible('.genotype-specific-annotations-facts');
 		browser.url(function (result) {
 			browser.resizeWindow(1280, 800);
-			browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+			browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
 		});
 
 		browser.click('#guideline-annotation > div.fact-section-content:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1) a');
@@ -34,7 +34,7 @@ module.exports = {
 		browser.assert.urlContains('cpicpgx');
 		browser.url(function (result) {
 			browser.resizeWindow(1280, 800);
-			browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+			browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
 		});
 
 		browser.end();

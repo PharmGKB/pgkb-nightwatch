@@ -6,7 +6,7 @@ module.exports = {
 		browser.assert.title('TPMT - Overview | PharmGKB');
 		browser.url(function (result) {
 			browser.resizeWindow(1280, 800);
-			browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+			browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
 		});
 
 		browser.click('ul.side-nav > :nth-child(2) a');
@@ -16,7 +16,7 @@ module.exports = {
 		browser.verify.attributeContains('.literature-list-item a', 'href', '/literature/14775937');
 		browser.url(function (result) {
 			browser.resizeWindow(1280, 800);
-			browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+			browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
 		});
 
 		browser.click('ul.side-nav > :last-child a');
@@ -24,7 +24,7 @@ module.exports = {
 		browser.assert.urlContains('link');
 		browser.url(function (result) {
 			browser.resizeWindow(1280, 800);
-			browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+			browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
 		});
 
 		browser.click('.link_tab__xrefs > :nth-child(9) a');

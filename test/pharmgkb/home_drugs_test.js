@@ -10,21 +10,21 @@ module.exports = {
         browser.assert.attributeContains('.letter-filter li:nth-of-type(20) a', 'href', '?t');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.click('.letter-filter li:nth-of-type(13) a');
         browser.waitForElementPresent('.pagination:first-of-type');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.click('.pagination__arrow a');
         browser.waitForElementPresent('.resource-list');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.click('.chemical-list-item:nth-of-type(16)');
@@ -32,7 +32,7 @@ module.exports = {
         browser.assert.urlContains('/chemical/');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.end();

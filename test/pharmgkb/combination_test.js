@@ -6,7 +6,7 @@ module.exports = {
     browser.assert.title('warfarin + CYP2C9 - Overview | PharmGKB');
     browser.url(function (result) {
       browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
     });
 
     browser.click('.fact:nth-of-type(2) > .fact-content a');
@@ -14,7 +14,7 @@ module.exports = {
     browser.assert.urlContains('/gene/');
     browser.url(function (result) {
       browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
     });
 
     browser.end();

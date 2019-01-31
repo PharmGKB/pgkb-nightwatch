@@ -7,7 +7,7 @@ module.exports = {
         browser.assert.urlContains('infobutton');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.click('.testing-actionable-pgx a');
@@ -20,7 +20,7 @@ module.exports = {
         browser.assert.urlContains('/drugLabelLegend');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.end();

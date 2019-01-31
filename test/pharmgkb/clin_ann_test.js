@@ -8,7 +8,7 @@ module.exports = {
     browser.assert.title('Clinical Annotation for HLA-B*58:01; allopurinol; Arthritis, Gouty, Drug Hypersensitivity, Epidermal Necrolysis, Toxic, Hyperuricemia, Kidney Failure, Chronic and Stevens-Johnson Syndrome (level 1A Toxicity/ADR) | PharmGKB');
     browser.url(function (result) {
       browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
     });
 
     browser.click('.compact-facts .fact:nth-of-type(3) .resource-link');
@@ -16,7 +16,7 @@ module.exports = {
     browser.assert.urlContains('/gene/');
     browser.url(function (result) {
       browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
     });
 
     browser.end();

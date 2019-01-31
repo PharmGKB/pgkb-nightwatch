@@ -11,7 +11,7 @@ module.exports = {
         browser.assert.attributeContains('td:nth-child(3) .guidelineBox-icon a', 'href', '/guidelineAnnotation/PA');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.click('td:last-of-type .guidelineBox-icon a');
@@ -19,7 +19,7 @@ module.exports = {
         browser.assert.urlContains('/guidelineAnnotation/PA');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.end();

@@ -12,7 +12,7 @@ module.exports = {
     browser.expect.element('ul.side-nav li:nth-child(4) a').text.to.equal('Clinical Annotations');
     browser.url(function (result) {
       browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
     });
 
     browser.click('ul.side-nav li:nth-child(4) a');
@@ -21,7 +21,7 @@ module.exports = {
     browser.assert.title('hmg coa reductase inhibitors - Clinical Annotations | PharmGKB');
     browser.url(function (result) {
       browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
     });
 
 
@@ -30,7 +30,7 @@ module.exports = {
     browser.assert.urlContains('/clinicalAnnotation/');
     browser.url(function (result) {
       browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
     });
 
     browser.end();

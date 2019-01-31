@@ -11,7 +11,7 @@ module.exports = {
     browser.assert.containsText('.results-list', 'No results matched your query.');
     browser.url(function (result) {
       browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
     });
 
     browser.setValue('.search-input', ['warf', browser.Keys.ENTER]);
@@ -21,7 +21,7 @@ module.exports = {
     browser.waitForElementPresent('.chemical-list-item');
     browser.url(function (result) {
       browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
     });
 
     browser.click('.chemical-list-item a');
@@ -30,7 +30,7 @@ module.exports = {
     browser.assert.title('warfarin - Overview | PharmGKB');
     browser.url(function (result) {
       browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
     });
 
     browser.end();

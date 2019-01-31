@@ -11,7 +11,7 @@ module.exports = {
     browser.assert.containsText('section:nth-of-type(2) div.row:nth-of-type(2) .downloads__card:nth-of-type(1) .downloads__card_text ul li', 'genes.zip');
     browser.url(function (result) {
       browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
     });
 
     browser.end();

@@ -12,7 +12,7 @@ module.exports = {
         browser.assert.attributeContains('.vip-list-item:first-of-type h5 a', 'href', '/vip/PA');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.end();

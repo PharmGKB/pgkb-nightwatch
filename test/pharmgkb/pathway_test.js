@@ -7,7 +7,7 @@ module.exports = {
         browser.assert.title('Abacavir Pathway, Pharmacokinetics/Pharmacodynamics Overview | PharmGKB');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.click('ul.side-nav > :nth-child(2) a');
@@ -15,7 +15,7 @@ module.exports = {
         browser.assert.urlContains('/components');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.click('.fact:nth-of-type(1) > .fact-content > .resource-links > :nth-child(4) a');
@@ -23,7 +23,7 @@ module.exports = {
         browser.assert.urlContains('gene');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.back();
@@ -32,7 +32,7 @@ module.exports = {
         browser.assert.urlContains('components');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.click('ul.side-nav > :nth-child(3) a');
@@ -40,7 +40,7 @@ module.exports = {
 		browser.assert.urlContains('/pathways');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
 		browser.click('.searchableList > :nth-child(2) a');
@@ -48,7 +48,7 @@ module.exports = {
 		browser.assert.urlContains('pathway/PA');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
 		browser.end();

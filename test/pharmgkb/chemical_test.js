@@ -7,7 +7,7 @@ module.exports = {
 		browser.assert.title('codeine - Overview | PharmGKB');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
 		browser.click('ul.side-nav > :nth-child(2) a');
@@ -15,7 +15,7 @@ module.exports = {
 		browser.assert.urlContains('guideline');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
 		browser.click('.btn-primary:nth-of-type(1)');
@@ -23,7 +23,7 @@ module.exports = {
 		browser.assert.urlContains('guideline/PA');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.click('select:nth-of-type(1) option[value="Normal function"]');
@@ -32,7 +32,7 @@ module.exports = {
         browser.assert.containsText('.fact:nth-of-type(1)', 'activity score');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(this.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
+            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
         browser.end();

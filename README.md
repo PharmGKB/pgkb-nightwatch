@@ -9,6 +9,12 @@ $> touch .env
 $> npm i
 ```
 
+In the `.env` file set the path you would like screenshots saved to
+
+```
+export SCREENSHOT_PATH=screenshots
+``` 
+
 ## Running
 
 To run all tests on www:
