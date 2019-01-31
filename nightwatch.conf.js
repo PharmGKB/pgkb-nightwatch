@@ -1,7 +1,7 @@
 require('env2')('.env'); // optionally store your environment variables in .env
 const seleniumServer = require("selenium-server");
 const chromedriver = require("chromedriver");
-const SCREENSHOT_PATH = './screenshots';
+const SCREENSHOT_PATH = 'screenshots';
 
 const config = {
   "src_folders": [
@@ -22,9 +22,13 @@ const config = {
   "test_settings": {
     "default": {
       "launch_url": "https://www.pharmgkb.org",
+      "globals": {
+        "waitForConditionTimeout": 15000
+      },
       "silent": true,
       "screenshots": {
         "enabled": true,
+        "on_failure": true,
         "path": SCREENSHOT_PATH
       },
       "desiredCapabilities": {
@@ -41,9 +45,9 @@ const config = {
     },
     "local": {
       "launch_url": "https://localhost.pharmgkb.org:9999",
-      "globals": {
-        "waitForConditionTimeout": 15000 // on localhost sometimes internet is slow so wait...
-      },
+    },
+    "fe-beta": {
+      "launch_url": "https://next-beta.pharmgkb.org",
     }
   }
 };
