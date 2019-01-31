@@ -6,7 +6,7 @@ module.exports = {
 
         browser.click('.labels a');
         browser.waitForElementPresent('.ReactTable');
-        browser.assert.urlContains('/labels');
+        browser.assert.urlContains('/labelAnnotations');
         browser.assert.attributeContains('.label-status a', 'href', '/labelAnnotation/PA');
         browser.assert.attributeContains('.rt-tr-group:last-of-type a', 'href', '/chemical/PA');
 

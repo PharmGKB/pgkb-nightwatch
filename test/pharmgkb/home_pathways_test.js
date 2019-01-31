@@ -16,11 +16,11 @@ module.exports = {
         browser.click('.checkbox:last-of-type');
 
         browser.click('.searchableList .clickable:last-of-type');
-        browser.waitForElementPresent('.resource-content');
+        browser.waitForElementPresent('#pathway-summary');
         browser.assert.urlContains('/pathway/');
 
         browser.url(function(result){
-           console.log(result.value);
+            console.log(result.value);
         });
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);

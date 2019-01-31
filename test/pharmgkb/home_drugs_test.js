@@ -21,19 +21,15 @@ module.exports = {
         });
 
         browser.click('.pagination__arrow a');
-        browser.waitForElementPresent('.resource-list');
+        browser.waitForElementPresent('.chemical-list-item a');
         browser.url(function (result) {
             browser.resizeWindow(1280, 800);
             browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
         });
 
-        browser.click('.chemical-list-item:nth-of-type(16)');
-        browser.waitForElementPresent('.fact-section:last-of-type');
+        browser.click('.chemical-list-item:nth-of-type(3) a');
+        browser.waitForElementPresent('.fact-section');
         browser.assert.urlContains('/chemical/');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
 
         browser.end();
     }
