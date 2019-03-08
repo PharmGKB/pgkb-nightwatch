@@ -12,8 +12,8 @@ module.exports = {
 		browser.click('ul.side-nav > :nth-child(2) a');
 		browser.waitForElementPresent('.facts-container > .fact-section:nth-of-type(2) h4');
 		browser.assert.urlContains('/gene/PA356/guideline');
-		browser.expect.element('.facts-container > .fact-section:nth-of-type(2) h4').text.to.equal('Rx Annotations');
-		browser.verify.attributeContains('.literature-list-item a', 'href', '/literature/14775937');
+		browser.expect.element('.facts-container > .fact-section:nth-of-type(2) h3').text.to.equal('Rx Study Annotations');
+		browser.verify.attributeContains('.literatureCitation a', 'href', '/literature/14775937');
 		browser.url(function (result) {
 			browser.resizeWindow(1280, 800);
 			browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
