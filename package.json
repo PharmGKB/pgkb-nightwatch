@@ -4,7 +4,7 @@
   "description": "Using nightwatch for front-end testing of PharmGKB",
   "main": "index.js",
   "engines": {
-    "node": "4.4.6"
+    "node": "8.15.1"
   },
   "scripts": {
     "test": "./node_modules/.bin/nightwatch",
@@ -19,17 +19,16 @@
   "license": "GPL-2.0",
   "homepage": "https://github.com/pharmgkb/pgkb-nightwatch#readme",
   "dependencies": {
-    "nightwatch": "^1.0.8",
-    "saucelabs": "^1.5.0",
-    "selenium-download": "^2.0.12"
+    "nightwatch": "^1.0.18",
+    "selenium-download": "^2.0.13"
   },
   "devDependencies": {
     "aws-sdk": "^2.283.1",
-    "chromedriver": "^2.38.3",
-    "env2": "^2.1.1",
-    "mime-types": "^2.1.13",
-    "nodemon": "^1.18.3",
-    "selenium-server": "^3.8.1"
+    "chromedriver": "^2.46.0",
+    "env2": "^2.2.2",
+    "mime-types": "^2.1.22",
+    "nodemon": "^1.18.10",
+    "selenium-server": "^3.141.59"
   },
   "keywords": [
     "nightwatch",
