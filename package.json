@@ -19,16 +19,14 @@
   "license": "GPL-2.0",
   "homepage": "https://github.com/pharmgkb/pgkb-nightwatch#readme",
   "dependencies": {
-    "nightwatch": "^1.0.18",
-    "selenium-download": "^2.0.13"
+    "nightwatch": "^1.0.18"
   },
   "devDependencies": {
     "aws-sdk": "^2.283.1",
     "chromedriver": "^2.46.0",
     "env2": "^2.2.2",
     "mime-types": "^2.1.22",
-    "nodemon": "^1.18.10",
-    "selenium-server": "^3.141.59"
+    "nodemon": "^1.18.10"
   },
   "keywords": [
     "nightwatch",
