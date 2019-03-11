@@ -1,15 +1,13 @@
+const helpers = require('../helpers');
 module.exports = {
-    'PharmGKB Download Variant Annotations Help Page test': function (browser) {
-        browser.url(browser.launchUrl + '/page/downloadVariantAnnotationsHelp');
+  'PharmGKB Download Variant Annotations Help Page test': function (browser) {
+    browser
+      .url(browser.launchUrl + '/page/downloadVariantAnnotationsHelp')
+      .waitForElementVisible('.html-container')
+      .assert.containsText('div.container h1', 'Variant Annotations Help File')
+      .assert.containsText('.html-container', 'var_pheno_ann.tsv');
+    helpers.screenshot(browser, '/varAnnHelp');
 
-        browser.waitForElementVisible('.html-container');
-        browser.assert.containsText('div.container h1', 'Variant Annotations Help File');
-        browser.assert.containsText('.html-container', 'var_pheno_ann.tsv');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
-
-        browser.end();
-    }
+    browser.end();
+  }
 };

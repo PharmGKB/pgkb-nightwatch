@@ -1,36 +1,30 @@
+const helpers = require('../helpers');
 module.exports = {
-    'PharmGKB Home Page test(Drugs)': function (browser) {
-        browser.url(browser.launchUrl);
+  'PharmGKB Home Page - Chemicals': function (browser) {
+    browser
+      .url(browser.launchUrl)
+      .waitForElementPresent('.home-page')
+      .click('.drugs a')
+      .waitForElementPresent('div.resource-list')
+      .assert.urlContains('/annotatedDrugs')
+      .assert.attributeContains('.letter-filter li:nth-of-type(20) a', 'href', '?t');
+    helpers.screenshot(browser, 'home-chemicals-1');
 
-        browser.waitForElementPresent('.home-page');
+    browser
+      .click('.letter-filter li:nth-of-type(13) a')
+      .waitForElementPresent('.pagination:first-of-type');
+    helpers.screenshot(browser, 'home-chemicals-2');
 
-        browser.click('.drugs a');
-        browser.waitForElementPresent('div.resource-list');
-        browser.assert.urlContains('/annotatedDrugs');
-        browser.assert.attributeContains('.letter-filter li:nth-of-type(20) a', 'href', '?t');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
+    browser
+      .click('.pagination__arrow a')
+      .waitForElementPresent('.chemical-list-item a');
+    helpers.screenshot(browser, 'home-chemicals-3');
 
-        browser.click('.letter-filter li:nth-of-type(13) a');
-        browser.waitForElementPresent('.pagination:first-of-type');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
+    browser
+      .click('.chemical-list-item:nth-of-type(2) a')
+      .waitForElementPresent('.fact-section')
+      .assert.urlContains('/chemical/');
 
-        browser.click('.pagination__arrow a');
-        browser.waitForElementPresent('.chemical-list-item a');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
-
-        browser.click('.chemical-list-item:nth-of-type(3) a');
-        browser.waitForElementPresent('.fact-section');
-        browser.assert.urlContains('/chemical/');
-
-        browser.end();
-    }
+    browser.end();
+  }
 };

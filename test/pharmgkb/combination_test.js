@@ -1,21 +1,19 @@
+const helpers = require('../helpers');
 module.exports = {
-  'PharmGKB Combination Page test': function (browser) {
-    browser.url(browser.launchUrl + '/combination/PA451906,PA126');
-    browser.waitForElementPresent('span.chemical_icon');
-    browser.assert.urlContains(',PA');
-    browser.assert.title('warfarin + CYP2C9 - Overview | PharmGKB');
-    browser.url(function (result) {
-      browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-    });
+  'PharmGKB Combination Page test': (browser) => {
+    const path = '/combination/PA451906,PA126';
+    browser
+      .url(browser.launchUrl + path)
+      .waitForElementPresent('span.chemical_icon')
+      .assert.urlContains(',PA')
+      .assert.title('warfarin + CYP2C9 - Overview | PharmGKB');
+    helpers.screenshot(browser, `${path}-1`);
 
-    browser.click('.fact:nth-of-type(2) > .fact-content a');
-    browser.waitForElementPresent('.vip-link');
-    browser.assert.urlContains('/gene/');
-    browser.url(function (result) {
-      browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-    });
+    browser
+      .click('.fact:nth-of-type(2) > .fact-content a')
+      .waitForElementPresent('.vip-link')
+      .assert.urlContains('/gene/');
+    helpers.screenshot(browser, `${path}-2`);
 
     browser.end();
   }

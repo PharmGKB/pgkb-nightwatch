@@ -4,7 +4,7 @@ module.exports = {
     const path = '/gene/PA356';
 
     browser
-      .url(browser.launchUrl + '/gene/PA356')
+      .url(browser.launchUrl + path)
       .waitForElementPresent('.fact-section-header')
       .assert.title('TPMT - Overview | PharmGKB');
     helpers.screenshot(browser, `${path}-1`);

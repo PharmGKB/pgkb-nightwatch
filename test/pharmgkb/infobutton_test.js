@@ -1,28 +1,24 @@
+const helpers = require('../helpers');
 module.exports = {
-	'PharmGKB Infobutton test': function (browser) {
-		browser.url('https://api.pharmgkb.org/v1/infobutton?mainSearchCriteria.v.c=11289');
+  'PharmGKB Infobutton test': function (browser) {
+    browser.url('https://api.pharmgkb.org/v1/infobutton?mainSearchCriteria.v.c=11289')
+      .assert.elementPresent('.testing-actionable-pgx')
+      .waitForElementPresent('section h2')
+      .assert.urlContains('infobutton');
+    helpers.screenshot(browser, 'infobutton-output');
 
-		browser.assert.elementPresent('.testing-actionable-pgx');
-        browser.waitForElementPresent('section h2');
-        browser.assert.urlContains('infobutton');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
+    browser
+      .click('.testing-actionable-pgx a')
+      .windowHandles(function(result) {
+        this.verify.equal(result.value.length, 2, 'There should be 2 windows open');
+        this.switchWindow(result.value[1]);
+      })
+      .assert.urlContains('/drugLabelLegend');
+    
+    browser.url('https://api.pharmgkb.org/infobutton.html')
+      .assert.elementPresent('#pharmgkb-infobutton-service');
+    helpers.screenshot(browser, 'infobutton-docs');
 
-        browser.click('.testing-actionable-pgx a');
-        browser.windowHandles(function(result) {
-        	var newWindow;
-        	this.verify.equal(result.value.length, 2, 'There should be 2 windows open');
-        	newWindow = result.value[1];
-        	this.switchWindow(newWindow);
-        });
-        browser.assert.urlContains('/drugLabelLegend');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
-
-        browser.end();
-	}
+    browser.end();
+  }
 };

@@ -1,21 +1,16 @@
+const helpers = require('../helpers');
 module.exports = {
-    'PharmGKB Home Page test(VIPs)': function (browser) {
-        browser.url(browser.launchUrl);
+  'PharmGKB Home Page test(VIPs)': function (browser) {
+    browser.url(browser.launchUrl)
+      .waitForElementPresent('.home-page')
+      .click('#vips')
+      .waitForElementPresent('.vip-list-item:last-of-type')
+      .assert.urlContains('/vips')
+      .waitForElementPresent('.vip-list')
+      .assert.attributeContains('.vip-list-item:first-of-type .vipList-litLink a', 'href','/literature/')
+      .assert.attributeContains('.vip-list-item:first-of-type h5 a', 'href', '/vip/PA');
+    helpers.screenshot(browser, '/home-vips');
 
-        browser.waitForElementPresent('.home-page');
-
-        browser.click('#vips');
-        browser.waitForElementPresent('.vip-list-item:last-of-type');
-        browser.assert.urlContains('/vips');
-        browser.waitForElementPresent('.vip-list');
-        browser.assert.attributeContains('.vip-list-item:first-of-type .vipList-litLink a', 'href','/literature/');
-        browser.assert.attributeContains('.vip-list-item:first-of-type h5 a', 'href', '/vip/PA');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
-
-        browser.end();
-    }
+    browser.end();
+  }
 };
-

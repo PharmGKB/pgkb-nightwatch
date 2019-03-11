@@ -1,23 +1,20 @@
+const helpers = require('../helpers');
 module.exports = {
-	'PharmGKB Disease Page test': function (browser) {
-		browser.url(browser.launchUrl + '/disease/PA443635');
+  'PharmGKB Disease Page test': function (browser) {
+    const path = '/disease/PA443635';
+    browser
+      .url(browser.launchUrl + path)
+      .waitForElementVisible('.counts')
+      .assert.title('Cardiovascular Diseases - Overview | PharmGKB')
+      .waitForElementVisible('.counts > a.count-link:nth-of-type(1)');
+    helpers.screenshot(browser, `${path}-1`);
 
-		browser.waitForElementVisible('.counts');
-		browser.assert.title('Cardiovascular Diseases - Overview | PharmGKB');
-		browser.waitForElementVisible('.counts > a.count-link:nth-of-type(1)');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
+    browser
+      .click('.counts > a.count-link:nth-of-type(1)')
+      .waitForElementVisible('.table-inline')
+      .assert.urlContains('/clinicalAnnotation');
+    helpers.screenshot(browser, `${path}-2`);
 
-        browser.click('.counts > a.count-link:nth-of-type(1)');
-        browser.waitForElementVisible('.table-inline');
-        browser.assert.urlContains('/clinicalAnnotation');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
-
-        browser.end();
-	}
+    browser.end();
+  }
 };

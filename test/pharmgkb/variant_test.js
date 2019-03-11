@@ -1,28 +1,26 @@
+const helpers = require('../helpers');
 module.exports = {
-    'PharmGKB Variant Page test': function (browser) {
-        browser.url(browser.launchUrl + '/variant/PA166157537');
+  'PharmGKB Variant Page test': (browser) => {
+    const path = '/variant/PA166157537';
 
-        browser.waitForElementPresent('.facts-container');
-        browser.assert.urlContains('/variant/PA');
-        browser.assert.title('rs267606723 - Overview | PharmGKB');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
+    browser
+      .url(browser.launchUrl + path)
+      .waitForElementPresent('.facts-container')
+      .assert.urlContains('/variant/PA')
+      .assert.title('rs267606723 - Overview | PharmGKB');
+    helpers.screenshot(browser, `/${path}-1`);
 
-        browser.click('ul.side-nav li:nth-of-type(4) a');
-        browser.waitForElementPresent('div.ReactTable');
-        browser.assert.urlContains('/variantAnnotation');
-        browser.url(function (result) {
-            browser.resizeWindow(1280, 800);
-            browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-        });
+    browser
+      .click('ul.side-nav li:nth-of-type(3) a')
+      .waitForElementPresent('div.ReactTable')
+      .assert.urlContains('/variantAnnotation');
+    helpers.screenshot(browser, `/${path}-2`);
 
+    browser
+      .click('.rt-tr-group div.rt-td a')
+      .assert.urlContains('/variant/PA')
+      .assert.urlContains('/variantAnnotation/');
 
-        browser.click('.rt-tr-group div.rt-td a');
-        browser.assert.urlContains('/variant/PA');
-        browser.assert.urlContains('/variantAnnotation/');
-
-        browser.end();
-    }
+    browser.end();
+  }
 };

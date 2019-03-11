@@ -1,14 +1,13 @@
+const helpers = require('../helpers');
 module.exports = {
-  'PharmGKB ISPC Page test': function (browser) {
-    browser.url(browser.launchUrl + '/page/ispc');
-
-    browser.waitForElementPresent('.static');
-    browser.assert.containsText('div.container h1', 'ISPC - International SSRI Pharmacogenomics Consortium');
+  'PharmGKB ISPC Page test': (browser) => {
+    const path = '/page/ispc';
+    browser
+      .url(browser.launchUrl + path)
+      .waitForElementPresent('.static')
+      .assert.containsText('div.container h1', 'ISPC - International SSRI Pharmacogenomics Consortium');
     browser.expect.element('#ispc-team').to.be.visible;
-    browser.url(function (result) {
-      browser.resizeWindow(1280, 800);
-      browser.saveScreenshot(process.env.SCREENSHOT_PATH + '/' + result.value.substring(24) + '.png');
-    });
+    helpers.screenshot(browser, path);
 
     browser.end();
   }
