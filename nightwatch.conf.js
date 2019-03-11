@@ -6,7 +6,7 @@ module.exports = {
   "src_folders": [
     "test/pharmgkb"
   ],
-  "output_folder": "./node_modules/nightwatch/reports", // reports (test outcome) output by Nightwatch
+  "output_folder": "reports",
   "webdriver": {
     "start_process": true,
     "server_path": chromedriver.path,
