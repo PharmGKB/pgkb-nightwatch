@@ -1,6 +1,7 @@
 const helpers = require('../helpers');
 module.exports = {
   'PharmGKB Combination Page test': (browser) => {
+    helpers.auth(browser);
     const path = '/combination/PA451906,PA126';
     browser
       .url(browser.launchUrl + path)
@@ -10,6 +11,7 @@ module.exports = {
     helpers.screenshot(browser, `${path}-1`);
 
     browser
+      .waitForElementPresent('.fact:nth-of-type(2) > .fact-content a')
       .click('.fact:nth-of-type(2) > .fact-content a')
       .waitForElementPresent('.vip-link')
       .assert.urlContains('/gene/');

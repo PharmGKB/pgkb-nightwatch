@@ -13,7 +13,14 @@ In the `.env` file set the path you would like screenshots saved to
 
 ```
 export SCREENSHOT_PATH=screenshots
-``` 
+```
+
+You should also set the following for your email and password if you plan to test on beta or on a local instance
+
+```
+export PGKB_USER=[your email]
+export PGKB_PASS=[your password]
+```
 
 ## Running
 

@@ -1,6 +1,7 @@
 const helpers = require('../helpers');
 module.exports = {
   'PharmGKB Drug Class Overview Page test': (browser) => {
+    helpers.auth(browser);
     const path = '/chemical/PA133950441';
     browser
       .url(browser.launchUrl + path)

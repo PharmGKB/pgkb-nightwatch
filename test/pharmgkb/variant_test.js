@@ -1,6 +1,7 @@
 const helpers = require('../helpers');
 module.exports = {
   'PharmGKB Variant Page test': (browser) => {
+    helpers.auth(browser);
     const path = '/variant/PA166157537';
 
     browser

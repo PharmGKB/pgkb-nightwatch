@@ -1,6 +1,7 @@
 const helpers = require('../helpers');
 module.exports = {
   'PharmGKB Download Page test': (browser) => {
+    helpers.auth(browser);
     const path = '/downloads';
 
     browser

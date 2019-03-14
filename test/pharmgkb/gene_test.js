@@ -1,6 +1,7 @@
 const helpers = require('../helpers');
 module.exports = {
   'PharmGKB Gene Page test': (browser) => {
+    helpers.auth(browser);
     const path = '/gene/PA356';
 
     browser

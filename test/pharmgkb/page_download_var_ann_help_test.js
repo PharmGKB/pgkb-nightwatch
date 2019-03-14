@@ -1,6 +1,7 @@
 const helpers = require('../helpers');
 module.exports = {
-  'PharmGKB Download Variant Annotations Help Page test': function (browser) {
+  'PharmGKB Download Variant Annotations Help Page test': (browser) => {
+    helpers.auth(browser);
     browser
       .url(browser.launchUrl + '/page/downloadVariantAnnotationsHelp')
       .waitForElementVisible('.html-container')

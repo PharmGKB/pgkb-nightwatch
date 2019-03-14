@@ -1,6 +1,7 @@
 const helpers = require('../helpers');
 module.exports = {
   'PharmGKB Search Page test': (browser) => {
+    helpers.auth(browser);
     browser
       .url(browser.launchUrl)
       .waitForElementPresent('.home-page')

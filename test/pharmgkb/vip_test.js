@@ -1,6 +1,7 @@
 const helpers = require('../helpers');
 module.exports = {
   'PharmGKB Home VIP test': (browser) => {
+    helpers.auth(browser);
     const path = '/vip/PA166171172';
     
     browser

@@ -1,6 +1,7 @@
 const helpers = require('../helpers');
 module.exports = {
   'PharmGKB Pathway Page test': (browser) => {
+    helpers.auth(browser);
     const path = '/pathway/PA166104634';
 
     browser
@@ -15,7 +16,9 @@ module.exports = {
       .assert.urlContains('/components');
     helpers.screenshot(browser, `${path}-2`);
 
-    browser.click('.fact:nth-of-type(1) > .fact-content > .resource-links > :nth-child(4) a')
+    browser
+      .waitForElementVisible('.fact:nth-of-type(1) > .fact-content > .resource-links')
+      .click('.fact:nth-of-type(1) > .fact-content > .resource-links > :nth-child(4) a')
       .waitForElementPresent('ul.side-nav')
       .assert.urlContains('gene');
     helpers.screenshot(browser, `${path}-3`);
@@ -30,7 +33,9 @@ module.exports = {
       .assert.urlContains('/pathways');
     helpers.screenshot(browser, `${path}-4`);
 
-    browser.click('.searchableList > :nth-child(2) a')
+    browser
+      .waitForElementVisible('.searchableList .pathway-list-item')
+      .click('.searchableList > :nth-child(2) a')
       .waitForElementPresent('.fact-section-content')
       .assert.urlContains('pathway/PA');
     helpers.screenshot(browser, `${path}-5`);

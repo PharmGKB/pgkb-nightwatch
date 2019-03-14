@@ -1,6 +1,7 @@
 const helpers = require('../helpers');
 module.exports = {
-  'PharmGKB Labels List Page': function (browser) {
+  'PharmGKB Labels List Page': (browser) => {
+    helpers.auth(browser);
     browser
       .url(browser.launchUrl)
       .waitForElementPresent('.home-page')

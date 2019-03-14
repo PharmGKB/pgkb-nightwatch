@@ -1,11 +1,14 @@
 const helpers = require('../helpers');
 module.exports = {
-  'PharmGKB Guidelines List Page': function (browser) {
+  'PharmGKB Guidelines List Page': (browser) => {
+    helpers.auth(browser);
     browser
       .url(browser.launchUrl)
-      .waitForElementPresent('.home-page')
+      .waitForElementPresent('.home-page');
+
+    browser
       .click('.dosing a')
-      .waitForElementPresent('.ReactTable')
+      .waitForElementPresent('.ReactTable', 60000)
       .assert.urlContains('/guidelineAnnotations')
       .assert.attributeContains('.guidelineBox-icon:first-of-type a', 'href', '/guidelineAnnotation/PA')
       .assert.attributeContains('.rt-tr-group:nth-child(3) .guidelineBox-icon a', 'href', '/guidelineAnnotation/PA');

@@ -1,10 +1,11 @@
 const helpers = require('../helpers');
 module.exports = {
   'PharmGKB Dosing Guideline Page test': (browser) => {
+    helpers.auth(browser);
     const path = '/guidelineAnnotation/PA166105006';
     browser
       .url(browser.launchUrl + path)
-      .waitForElementVisible('.guideline-detail')
+      .waitForElementVisible('.genotype-specific-annotations-picker')
       .assert.urlContains('/guidelineAnnotation/')
       .assert.title('Annotation of CPIC Guideline for amitriptyline and CYP2C19,CYP2D6 | PharmGKB');
     helpers.screenshot(browser, `${path}-1`);

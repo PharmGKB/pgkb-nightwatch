@@ -1,8 +1,11 @@
 const helpers = require('../helpers');
 module.exports = {
-  'PharmGKB Home Page test(VIPs)': function (browser) {
-    browser.url(browser.launchUrl)
+  'PharmGKB Home Page test(VIPs)': (browser) => {
+    helpers.auth(browser);
+    browser
+      .url(browser.launchUrl)
       .waitForElementPresent('.home-page')
+
       .click('#vips')
       .waitForElementPresent('.vip-list-item:last-of-type')
       .assert.urlContains('/vips')

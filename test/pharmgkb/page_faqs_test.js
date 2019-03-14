@@ -1,6 +1,7 @@
 const helpers = require('../helpers');
 module.exports = {
     'PharmGKB FAQs Page test': (browser) => {
+        helpers.auth(browser);
         const path = '/page/faqs';
         browser
           .url(browser.launchUrl + path)

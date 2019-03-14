@@ -1,6 +1,7 @@
 const helpers = require('../helpers');
 module.exports = {
   'PharmGKB Drug Label Page test': (browser) => {
+    helpers.auth(browser);
     const path = '/labelAnnotation/PA166104782';
     
     browser
