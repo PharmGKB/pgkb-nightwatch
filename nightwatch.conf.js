@@ -43,6 +43,14 @@ module.exports = {
       }
     },
 
+    "local": {
+      "launch_url": "https://localhost.pharmgkb.org:9999",
+    },
+
+    "www": {
+      "launch_url": "https://www.pharmgkb.org",
+    },
+
     safari: {
       desiredCapabilities : {
         browserName : 'safari',

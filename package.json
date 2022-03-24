@@ -9,7 +9,7 @@
   "scripts": {
     "test": "./node_modules/.bin/nightwatch",
     "test-local": "./node_modules/.bin/nightwatch --env local",
-    "test-beta": "./node_modules/.bin/nightwatch --env fe-beta"
+    "test-www": "./node_modules/.bin/nightwatch --env www"
   },
   "repository": {
     "type": "git",
