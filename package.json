@@ -15,18 +15,19 @@
     "type": "git",
     "url": "git+https://github.com/pharmgkb/pgkb-nightwatch.git"
   },
-  "author": "Jill Robinson",
+  "author": "Ryan Whaley",
   "license": "GPL-2.0",
   "homepage": "https://github.com/pharmgkb/pgkb-nightwatch#readme",
   "dependencies": {
-    "nightwatch": "^1.0.18"
+    "nightwatch": "^2.0.10"
   },
   "devDependencies": {
-    "aws-sdk": "^2.283.1",
-    "chromedriver": "^2.46.0",
+    "aws-sdk": "^2.1099.0",
+    "chromedriver": "^99.0.0",
     "env2": "^2.2.2",
-    "mime-types": "^2.1.22",
-    "nodemon": "^1.18.10"
+    "geckodriver": "^3.0.1",
+    "mime-types": "^2.1.35",
+    "nodemon": "^2.0.15"
   },
   "keywords": [
     "nightwatch",

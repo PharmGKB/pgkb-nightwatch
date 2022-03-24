@@ -5,7 +5,9 @@ selenium-debug.log
 selenium-server.log
 .DS_Store
 
+logs
 reports
 screenshots
+tests_output
 .env
 .idea
