@@ -38,4 +38,18 @@ module.exports = {
             .assert.elementPresent('div.listItem__thumbnail img')
             .assert.urlContains('pathway');
     },
+    testRelated: (browser) => {
+        browser.click('a.sideNavMenu__item--relatedTo')
+            .assert.not.elementPresent('.error-box')
+            .assert.elementPresent('div.resourceCounts')
+            .assert.elementPresent('div.resultHit')
+            .assert.urlContains('related');
+    },
+    testAutomated: (browser) => {
+        browser.click('a.sideNavMenu__item--automatedAnnotations')
+            .assert.not.elementPresent('.error-box')
+            .assert.elementPresent('section.nlp-set')
+            .assert.elementPresent('div.nlp')
+            .assert.urlContains('automatedAnnotation');
+    },
 };
