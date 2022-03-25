@@ -1,22 +1,27 @@
 const helpers = require('../helpers');
+const tab = require('../tab_tester');
 module.exports = {
   'PharmGKB Chemical Page test': (browser) => {
     helpers.auth(browser);
 
     browser
         .url(browser.baseUrl + '/chemical/PA449088')
-        .waitForElementPresent('.chemicalStructure div img')
+        .assert.not.elementPresent('.error-box')
+        .assert.elementPresent('.chemicalStructure div img')
+        .assert.elementPresent('.resource-counts')
         .assert.urlContains('/chemical/')
         .assert.titleEquals('codeine')
-        .saveScreenshot(`screenshots/chemical-overview.png`)
-        .click('a.sideNavMenu__item--prescribingInfo')
-        .waitForElementPresent('table.simpleTable')
-        .saveScreenshot(`screenshots/chemical-prescribingInfo.png`)
-        .assert.urlContains('prescribingInfo')
-        .click('.btn-primary:nth-of-type(1)')
-        .assert.urlContains('guidelineAnnotation/PA')
-        .assert.textContains('h3', 'Annotation of CPIC Guideline for codeine')
-        .saveScreenshot(`screenshots/chemical-guidelineAnnotation.png`)
+        .saveScreenshot(`screenshots/chemical-overview.png`);
+    tab.testPrescribing(browser);
+    tab.testDrugLabels(browser);
+    tab.testClinicalAnnotations(browser);
+    tab.testVariantAnnotations(browser);
+    tab.testLiterature(browser);
+    tab.testPathway(browser);
+    browser
+        .url(browser.baseUrl + '/chemical/PAbadid')
+        .assert.titleEquals('PharmGKB')
+        .assert.elementPresent('.error-box')
         .end();
   }
 };
