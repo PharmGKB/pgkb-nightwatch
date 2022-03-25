@@ -25,10 +25,17 @@ module.exports = {
             .assert.elementPresent('div.variantAnnotationsTable')
             .assert.urlContains('variantAnnotation');
     },
+    testNamedAlleles: (browser) => {
+        browser.click('a.sideNavMenu__item--namedAlleles')
+            .assert.not.elementPresent('.error-box')
+            .assert.elementPresent('table.table--nonFluid')
+            .assert.urlContains('haplotype');
+    },
     testLiterature: (browser) => {
         browser.click('a.sideNavMenu__item--literature')
             .assert.not.elementPresent('.error-box')
             .assert.elementPresent('div.searchableList')
+            .assert.not.textContains('div.searchableList', 'No publications.')
             .assert.urlContains('literature');
     },
     testPathway: (browser) => {
@@ -51,5 +58,11 @@ module.exports = {
             .assert.elementPresent('section.nlp-set')
             .assert.elementPresent('div.nlp')
             .assert.urlContains('automatedAnnotation');
+    },
+    testLinks: (browser) => {
+        browser.click('a.sideNavMenu__item--linksDownloads')
+            .assert.not.elementPresent('.error-box')
+            .assert.elementPresent('div.linksTab__xrefs')
+            .assert.urlContains('/link');
     },
 };

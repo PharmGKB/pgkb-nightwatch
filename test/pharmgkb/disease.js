@@ -1,21 +1,25 @@
 const helpers = require('../helpers');
+const tab = require('../tab_tester');
 module.exports = {
-  'PharmGKB Disease Page test': (browser) => {
-    helpers.auth(browser);
-    const path = '/disease/PA443635';
-    browser
-      .url(browser.launchUrl + path)
-      .waitForElementVisible('.counts')
-      .assert.title('Cardiovascular Diseases - Overview | PharmGKB')
-      .waitForElementVisible('.counts > a.count-link:nth-of-type(1)');
-    helpers.screenshot(browser, `${path}-1`);
+    'PharmGKB Disease Page test': (browser) => {
+        helpers.auth(browser);
 
-    browser
-      .click('.counts > a.count-link:nth-of-type(1)')
-      .waitForElementVisible('.table-inline')
-      .assert.urlContains('/clinicalAnnotation');
-    helpers.screenshot(browser, `${path}-2`);
-
-    browser.end();
-  }
+        browser
+            .url(browser.baseUrl + '/disease/PA443635')
+            .assert.not.elementPresent('.error-box')
+            .assert.elementPresent('.resourceCounts')
+            .assert.urlContains('/disease/')
+            .assert.titleEquals('Cardiovascular Diseases')
+        tab.testClinicalAnnotations(browser);
+        tab.testVariantAnnotations(browser);
+        tab.testLiterature(browser);
+        tab.testPathway(browser);
+        tab.testRelated(browser);
+        tab.testLinks(browser);
+        browser
+            .url(browser.baseUrl + '/disease/PAbadid')
+            .assert.titleEquals('PharmGKB')
+            .assert.elementPresent('.error-box')
+            .end();
+    }
 };

@@ -1,21 +1,30 @@
 const helpers = require('../helpers');
+const tab = require('../tab_tester');
 module.exports = {
-  'PharmGKB Haplotype Page test': (browser) => {
-    helpers.auth(browser);
-    const path = '/haplotype/PA165816577';
-    browser
-      .url(browser.launchUrl + path)
-      .waitForElementVisible('div.fact span.fact-content a.resource-link')
-      .assert.containsText('span.resource-name', 'CYP2D6*2')
-      .assert.title('CYP2D6*2 - Overview | PharmGKB');
-    helpers.screenshot(browser, `${path}-1`);
+    'PharmGKB Haplotype Page test': (browser) => {
+        helpers.auth(browser);
 
-    browser
-      .click('ul.side-nav > :nth-child(6) a')
-      .waitForElementVisible('div.related-set')
-      .assert.urlContains('related');
-    helpers.screenshot(browser, `${path}-2`);
-
-    browser.end();
-  }
+        browser
+            .url(browser.baseUrl + '/haplotype/PA165816544')
+            .assert.not.elementPresent('.error-box')
+            .assert.elementPresent('.resourceCounts')
+            .assert.urlContains('/haplotype/')
+            .assert.titleEquals('CYP2C9*3')
+            .assert.textContains('div.tag', 'CPIC Gene')
+            .assert.textContains('div.tag:nth-of-type(2)', 'PharmVar Gene')
+            .assert.textContains('span.btnWrapper a', 'Download Translation Table');
+        tab.testPrescribing(browser);
+        tab.testDrugLabels(browser);
+        tab.testClinicalAnnotations(browser);
+        tab.testVariantAnnotations(browser);
+        tab.testLiterature(browser);
+        tab.testRelated(browser);
+        tab.testAutomated(browser);
+        tab.testLinks(browser);
+        browser
+            .url(browser.baseUrl + '/haplotype/PAbadid')
+            .assert.titleEquals('PharmGKB')
+            .assert.elementPresent('.error-box')
+            .end();
+    }
 };

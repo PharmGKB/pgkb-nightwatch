@@ -20,6 +20,7 @@ module.exports = {
     tab.testPathway(browser);
     tab.testRelated(browser);
     tab.testAutomated(browser);
+    tab.testLinks(browser);
     browser
         .url(browser.baseUrl + '/chemical/PAbadid')
         .assert.titleEquals('PharmGKB')
