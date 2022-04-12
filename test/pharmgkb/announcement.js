@@ -10,6 +10,7 @@ module.exports = {
 
         browser
             .url(browser.baseUrl)
+            .waitForElementVisible('.banner__close')
             .click('.banner__close')                        // dismiss the banner
             .waitForElementNotPresent('.banner')      // wait for the banner to go away
             .click('.stat.pathways')                        // go to the pathways list page
