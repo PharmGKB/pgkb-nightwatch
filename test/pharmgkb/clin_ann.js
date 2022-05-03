@@ -11,7 +11,7 @@ module.exports = {
         .assert.textContains('div.tag', 'Level 1A');
     browser.expect.elements('div.clinical-annotation-detail div.fact-section:nth-of-type(1) div.tag').count.to.equal(2)
     browser
-        .assert.elementPresent('svg.fa-child')
+        .assert.elementPresent('svg.fa-child-reaching')
         .assert.elementPresent('#ca-level-section')
         .assert.elementPresent('.evidence-section')
         .assert.elementPresent('.variant-annotation-detail')
