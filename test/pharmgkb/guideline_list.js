@@ -9,7 +9,7 @@ module.exports = {
             .waitForElementVisible('#guidelineAnnotationTable')
             .click('.guidelineItem__text a')
             .assert.urlContains('/guidelineAnnotation/PA')
-            .assert.elementPresent('#guideline-annotation')
+            .assert.textContains('div.section:nth-of-type(4) > h3', 'Annotation')
             .back()
             .sendKeys('input[name=drug]', 'amikacin')
             .assert.elementPresent('.guidelineItem.CPIC')

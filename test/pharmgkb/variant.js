@@ -15,7 +15,7 @@ module.exports = {
             .click('a.sideNavMenu__item--prescribingInfo')
             .assert.not.elementPresent('.error-box')
             .assert.urlContains('prescribingInfo')
-            .assert.textContains('h3.fact-section-header', 'Drug Label Annotations with Genotype-Based Prescribing Information');
+            .assert.textContains('div.section:nth-of-type(2) > h3', 'Drug Label Annotations with Genotype-Based Prescribing Information');
 
         tab.testDrugLabels(browser);
         tab.testClinicalAnnotations(browser);
