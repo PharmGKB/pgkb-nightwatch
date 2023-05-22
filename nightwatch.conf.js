@@ -76,11 +76,7 @@ module.exports = {
       },
       webdriver: {
         start_process: true,
-        server_path: '',
-        cli_args: [
-          // very verbose geckodriver logs
-          // '-vv'
-        ]
+        server_path: 'node_modules/geckodriver/.bin/geckodriver'
       }
     },
 
